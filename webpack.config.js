@@ -5,7 +5,7 @@ const path = require('path');
 // entry: define entry poinVt
 // output: define location of final bundle
 module.exports = {
-  entry: './src/app.js',
+  entry: './src/playground/redux-101.js',
   output: {
     path: path.join(__dirname, 'public'),  // absolute path to where to output
     filename: 'bundle.js'                  //can use any name
