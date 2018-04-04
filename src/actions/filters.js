@@ -1,4 +1,4 @@
-export const setTextFitler = (text = '') => ({
+export const setTextFilter = (text = '') => ({
   type: 'SET_TEXT_FILTER',
   text
 })
