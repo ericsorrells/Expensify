@@ -2,8 +2,6 @@ import React from 'react';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
 
-const now = moment();
-console.log('MOM:', now.format('MMM Do, YYYY'));
 class ExpenseForm extends React.Component {
   constructor(props) {
     super(props)
@@ -24,7 +22,7 @@ class ExpenseForm extends React.Component {
 
   onNoteChange = (e) => {
     const note = e.target.value;
-    this.setState(() => ({}))
+    this.setState(() => ({ note }));
   }
 
   onAmountChange = (e) => {
@@ -93,7 +91,8 @@ class ExpenseForm extends React.Component {
             value={this.state.note}
             placeholder="Add a note!"
             onChange={this.onNoteChange}
-          />
+          >
+          </textarea>
           
           <button>Submit</button>
 
