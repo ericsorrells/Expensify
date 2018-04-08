@@ -13,16 +13,32 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
-database.ref().set({
-  name: 'Eric Sorrells',
-  age: 26, 
-  isSingle: false,
-  location: {
-    city: 'Atlanta',
-    country: 'USA'
-  }
-});
+// database.ref().set({
+//   name: 'Eric Sorrells',
+//   age: 26, 
+//   isSingle: false,
+//   location: {
+//     city: 'Atlanta',
+//     country: 'USA'
+//   }
+// }).then(() => {
+//   console.log('SUCCESSFUL!');
+// }).catch((error) => {
+//   console.log('ERROR:', error);
+// });
 
-database.ref('age').set(34);
-database.ref('location/city').set('Rome');
-database.ref('attributes').set({ height: 61, weight: 150 })
+database.ref('isSingle')
+  .remove()
+  .then(() => {
+    console.log('Data Removed');
+  })
+  .catch((error) => {
+    console.log('Error: ', error);
+  })
+
+
+// database.ref('age').set(34);
+// database.ref('location/city').set('Rome');
+// database.ref('attributes').set({ height: 61, weight: 150 })
+//   .then(() => {console.log('It Works 2')})
+//   .catch((e) => { console.log('IT FAILED');})
