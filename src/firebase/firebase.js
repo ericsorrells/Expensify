@@ -13,24 +13,43 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
-database.ref().set({
-  name: 'Eric Sorrells',
-  age: 26, 
-  stressLevel: 6,
-  isSingle: false,
-  job: {
-    title: 'SW Developer',
-    company: 'Google'
-  },
-  location: {
-    city: 'Atlanta',
-    country: 'USA'
-  }
-}).then(() => {
-  console.log('SUCCESSFUL!');
-}).catch((error) => {
-  console.log('ERROR:', error);
-});
+const onValueChange = database.ref()
+  .on('value', (snapshot) => {
+    const val = snapshot.val();
+    console.log(`${val.name} is a ${val.job.title} in ${val.location.city}`);
+  }, (e) => {
+    console.log('ERROR: ', e);
+  })
+
+  console.log('VAL', onValueChange);
+
+
+  // .then((snapshot) => {
+  //   const val = snapshot.val();
+  //   console.log('VAL: ', val);
+  // })
+  // .catch((e) => {
+  //   console.log('ERROR: ', e);
+  // })
+
+// database.ref().set({
+//   name: 'Eric Sorrells',
+//   age: 26, 
+//   stressLevel: 6,
+//   isSingle: false,
+//   job: {
+//     title: 'SW Developer',
+//     company: 'Google'
+//   },
+//   location: {
+//     city: 'Atlanta',
+//     country: 'USA'
+//   }
+// }).then(() => {
+//   console.log('SUCCESSFUL!');
+// }).catch((error) => {
+//   console.log('ERROR:', error);
+// });
 
 // database.ref('isSingle')
 //   .remove()
@@ -41,11 +60,15 @@ database.ref().set({
 //     console.log('Error: ', error);
 //   })
 
-database.ref().update({
-  stressLevel: 9,
-  'job/company': 'Amazon',
-  'location/city': 'Seattle'
-})
+// database.ref().update({
+//   stressLevel: 9,
+//   'job/company': 'Amazon',
+//   'location/city': 'Seattle'
+// }).then(() => {
+
+// }).catch(() => {
+
+// })
 
 // database.ref('age').set(34);
 // database.ref('location/city').set('Rome');
