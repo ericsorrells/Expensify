@@ -13,29 +13,39 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
-// database.ref().set({
-//   name: 'Eric Sorrells',
-//   age: 26, 
-//   isSingle: false,
-//   location: {
-//     city: 'Atlanta',
-//     country: 'USA'
-//   }
-// }).then(() => {
-//   console.log('SUCCESSFUL!');
-// }).catch((error) => {
-//   console.log('ERROR:', error);
-// });
+database.ref().set({
+  name: 'Eric Sorrells',
+  age: 26, 
+  stressLevel: 6,
+  isSingle: false,
+  job: {
+    title: 'SW Developer',
+    company: 'Google'
+  },
+  location: {
+    city: 'Atlanta',
+    country: 'USA'
+  }
+}).then(() => {
+  console.log('SUCCESSFUL!');
+}).catch((error) => {
+  console.log('ERROR:', error);
+});
 
-database.ref('isSingle')
-  .remove()
-  .then(() => {
-    console.log('Data Removed');
-  })
-  .catch((error) => {
-    console.log('Error: ', error);
-  })
+// database.ref('isSingle')
+//   .remove()
+//   .then(() => {
+//     console.log('Data Removed');
+//   })
+//   .catch((error) => {
+//     console.log('Error: ', error);
+//   })
 
+database.ref().update({
+  stressLevel: 9,
+  'job/company': 'Amazon',
+  'location/city': 'Seattle'
+})
 
 // database.ref('age').set(34);
 // database.ref('location/city').set('Rome');
