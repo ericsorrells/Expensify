@@ -13,6 +13,11 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
+export { firebase };
+export default database;
+
+// =============================================================
+
 // database.ref('expenses')
 //   .once('value')
 //   .then((snapshot) => {
@@ -39,10 +44,10 @@ const database = firebase.database();
 //   })
 
 
-database.ref('expenses')
-  .on('child_added', (snapshot) => {
-    console.log('ADDED', snapshot.val());
-  })
+// database.ref('expenses')
+//   .on('child_added', (snapshot) => {
+//     console.log('ADDED', snapshot.val());
+//   })
 
 // database.ref('expenses').push({
 //   title: 'NEW ITEM!',
