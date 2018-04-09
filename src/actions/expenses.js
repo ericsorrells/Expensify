@@ -10,7 +10,7 @@ export const startAddExpense = (expensesData = {}) => {
       createdAt = 0
     } = expensesData;
     const expense = { description, note, amount, createdAt };
-   console.log('EXP TEST', expense); 
+
     return database.ref('expenses').push(expense)
       .then((ref) => {
         dispatch(addExpense({
@@ -37,3 +37,10 @@ export const editExpense = (id, updates) => ({
   updates
 }) 
 
+export const setExpenses = (expenses) => ({
+  type: 'SET_EXPENSES',
+  expenses
+})
+
+
+//export const startSetExpenses
