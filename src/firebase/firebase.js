@@ -13,15 +13,91 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
-const onValueChange = database.ref()
-  .on('value', (snapshot) => {
-    const val = snapshot.val();
-    console.log(`${val.name} is a ${val.job.title} in ${val.location.city}`);
-  }, (e) => {
-    console.log('ERROR: ', e);
+// database.ref('expenses')
+//   .once('value')
+//   .then((snapshot) => {
+//     const expenses = [];
+//     snapshot.forEach((childSnaptshot) => {
+//       expenses.push({
+//         id: childSnaptshot.key,
+//         ...childSnaptshot.val()
+//       });
+//     });
+//     console.log('EXPENSES', expenses);
+//   })
+
+// database.ref('expenses')
+//   .on('value', (snapshot) => {
+//     const expenses = [];
+//     snapshot.forEach((childSnapshot) => {
+//       expenses.push({
+//         id: childSnapshot.key,
+//         ...childSnapshot.val()
+//       })
+//       console.log('NEW DATA', expenses);
+//     })
+//   })
+
+
+database.ref('expenses')
+  .on('child_added', (snapshot) => {
+    console.log('ADDED', snapshot.val());
   })
 
-  console.log('VAL', onValueChange);
+// database.ref('expenses').push({
+//   title: 'NEW ITEM!',
+//   text: 'Some additional text'
+// })
+
+// database.ref('notes').push({
+//   title: 'ToDo 1',
+//   text: 'My cool text'
+// })
+
+// database.ref('notes').push({
+//   title: 'ToDo 2',
+//   text: 'My cool text'
+// })
+
+// database.ref('notes/-L9b7qgC4P1TEPWQumN5').update({
+//   text: 'My cool UPDATED text!!'
+// })
+
+// database.ref('notes/-L9b7qgC4P1TEPWQumN5').remove();
+
+
+
+
+
+// database.ref('expenses').push({
+//   description: 'Fruitalicious!',
+//   note: 'This is a note',
+//   amount: 100,
+//   createdAt: 12345
+// })
+
+// database.ref('expenses').push({
+//   description: 'My note',
+//   note: 'This is a note',
+//   amount: 100,
+//   createdAt: 12345
+// })
+
+// database.ref('expenses').push({
+//   description: '',
+//   note: 'This is a note',
+//   amount: 100,
+//   createdAt: 12345
+// })
+// const onValueChange = database.ref()
+//   .on('value', (snapshot) => {
+//     const val = snapshot.val();
+//     console.log(`${val.name} is a ${val.job.title} in ${val.location.city}`);
+//   }, (e) => {
+//     console.log('ERROR: ', e);
+//   })
+
+//   console.log('VAL', onValueChange);
 
 
   // .then((snapshot) => {
