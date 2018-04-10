@@ -1,9 +1,23 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import expenses from '../fixtures/expenses';
 import { EditExpense } from '../../components/EditExpense';
-import ExpenseForm from '../../components/ExpenseForm';
-import expenses from '../fixtures/expenses'
 
+let editExpense, startRemoveExpense, history, component;
+
+beforeEach(() => {
+  editExpense = jest.fn();
+  startRemoveExpense = jest.fn();
+  history = { push: jest.fn() };
+  component = shallow(
+    <EditExpense
+      editExpense={editExpense}
+      startRemoveExpense={startRemoveExpense}
+      history={history}
+      expense={expenses[2]}
+    />
+  );
+});
 
 test('it renders correcty', () => {
   const component = shallow(<EditExpense />)
@@ -11,31 +25,13 @@ test('it renders correcty', () => {
 });
 
 test('onSubmit works correctly', () => {
-  const editExpense = jest.fn();
-  const history = { push: jest.fn() };
-  const component = shallow(
-    <EditExpense 
-      expense={expenses[0]} 
-      editExpense={editExpense} 
-      history={history}
-    />
-  )
-  component.find('ExpenseForm').prop('onSubmit')(expenses[0]);
+  component.find('ExpenseForm').prop('onSubmit')(expenses[2]);
   expect(history.push).toHaveBeenLastCalledWith('/');
-  expect(editExpense).toHaveBeenLastCalledWith(expenses[0].id, expenses[0])
+  expect(editExpense).toHaveBeenLastCalledWith(expenses[2].id, expenses[2])
 });
 
 test('should handle removeExpense', () => {
-  const removeExpense = jest.fn();
-  const history = { push: jest.fn() };
-  const component = shallow(
-    <EditExpense 
-      expense={expenses[0]} 
-      removeExpense={removeExpense} 
-      history={history}
-    />
-  )
-  component.find('button').prop('onClick')(expenses[0]);
+  component.find('button').prop('onClick')(expenses[2]);
   expect(history.push).toHaveBeenLastCalledWith('/');
-  expect(removeExpense).toHaveBeenLastCalledWith(expenses[0]);
+  expect(startRemoveExpense).toHaveBeenLastCalledWith(expenses[2]);
 });
