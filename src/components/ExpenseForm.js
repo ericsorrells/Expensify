@@ -60,10 +60,9 @@ class ExpenseForm extends React.Component {
 
   render(){
     return(
-     <div>
-        <form onSubmit={this.onSubmit}>
-          { this.state.error && <h3>{this.state.error}</h3>}
-          <input
+      <form className="form" onSubmit={this.onSubmit}>
+        { this.state.error && <p className="form__error">{this.state.error}</p>}
+        <input
             type="text"
             placeholder="Description"
             autoFocus
@@ -97,10 +96,11 @@ class ExpenseForm extends React.Component {
           >
           </textarea>
           
-          <button>Submit</button>
+          <div>
+           <button className="button">Add Expense</button>
+          </div>
 
-        </form>
-      </div> 
+      </form>
     )
   }  
 }
