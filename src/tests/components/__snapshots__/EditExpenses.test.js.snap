@@ -2,13 +2,27 @@
 
 exports[`it renders correcty 1`] = `
 <div>
-  <ExpenseForm
-    onSubmit={[Function]}
-  />
-  <button
-    onClick={[Function]}
+  <div
+    className="page-header"
   >
-    Remove
-  </button>
+    <h1
+      className="page-header__title content-container"
+    >
+      Edit Expenses
+    </h1>
+  </div>
+  <div
+    className="content-container"
+  >
+    <ExpenseForm
+      onSubmit={[Function]}
+    />
+    <button
+      className="button button--secondary"
+      onClick={[Function]}
+    >
+      Remove Expense
+    </button>
+  </div>
 </div>
 `;

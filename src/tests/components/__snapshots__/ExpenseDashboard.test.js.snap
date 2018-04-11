@@ -2,9 +2,6 @@
 
 exports[`<ExpenseDashboard/>: should render correctly with expenses 1`] = `
 <div>
-  <h3>
-    Expense Dashboard
-  </h3>
   <Connect(ExpenseSummary) />
   <Connect(ExpenseListFilters) />
   <Connect(ExpenseList) />
