@@ -7,7 +7,6 @@ exports[`<ExpenseListItem: renders correctly w props 1`] = `
     to="/edit/1"
   >
     <h3>
-      Description: 
       some description
     </h3>
   </Link>
@@ -15,6 +14,7 @@ exports[`<ExpenseListItem: renders correctly w props 1`] = `
     $1.00
     -
     December 31st, 1969
+    <br />
   </p>
 </div>
 `;
